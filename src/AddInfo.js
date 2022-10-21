@@ -1,5 +1,6 @@
 // Form
 import React, { Component } from "react";
+import './AddInfo.css';
 
 class AddInfo extends Component {
     state = {
@@ -135,7 +136,7 @@ class AddInfo extends Component {
         if (this.validateName(this.state.firstName) && this.validateAge(this.state.age) && this.validateContact(this.state.contact)) {
             alert('form is submited');
             this.props.addData(this.state);
-            
+
             this.setState({
                 firstName: '',
                 age: '',
@@ -153,15 +154,16 @@ class AddInfo extends Component {
             <form onSubmit={this.handleSubmit}>
                 <label>First Name</label>
                 <input type="text" onChange={this.handleChange} placeholder="Please enter name" id="firstName" value={this.state.firstName} />
-                <p style={{ color: 'red' }}>{this.state.error.nameError}</p>
+                <p style={{ color: 'red', textAlign: "20px" }}>{this.state.error.nameError}</p>
 
                 <label>Age</label>
                 <input type="text" onChange={this.handleChange} placeholder="Please enter age" id="age" value={this.state.age} />
-                <p style={{ color: 'red' }}>{this.state.error.ageError}</p>
+                {(this.state.error.nameError.length) ? (<p id="error-value">{this.state.error.ageError}</p>) : ('')}
+
 
                 <label>Contact Number</label>
                 <input type="text" onChange={this.handleChange} placeholder="Please enter contact" id="contact" value={this.state.contact} />
-                <p style={{ color: 'red' }}>{this.state.error.contactError}</p>
+                <p className="error-message">{this.state.error.contactError}</p>
                 <button type="submit">Submit</button>
             </form>
         )
@@ -169,6 +171,9 @@ class AddInfo extends Component {
 }
 
 export default AddInfo;
+
+
+// style="color: red, text-align: 20px"
 
 {/* <input onchange="add(e)"> */ }
 {/* <form onsubmit="">

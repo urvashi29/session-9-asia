@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddInfo from './AddInfo';
+import Display from './Display';
 
 class App extends Component {
     state = {
@@ -19,6 +20,7 @@ class App extends Component {
         return (
             <>
                 <AddInfo addData={this.addData} />
+                <Display personData={this.state.personData} />
             </>
         )
     }
@@ -26,6 +28,5 @@ class App extends Component {
 
 
 export default App;
-
 
 
